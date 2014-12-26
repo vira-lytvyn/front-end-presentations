@@ -21,9 +21,53 @@ UXD training
 # D3.js essentials
 ]
 
-D3.js is a JavaScript library for manipulating documents based on data, it helps you bring data to life using HTML, SVG and CSS.  
+  <svg width="96" height="91" style="position:relative;top:22px;">
+    <linearGradient id="logo-gradient-1" gradientUnits="userSpaceOnUse" x1="37.2417" y1="7.0552" x2="97.9669" y2="67.7803">
+      <stop offset="0" stop-color="#F9A03C"></stop>
+      <stop offset="1" stop-color="#F7974E"></stop>
+    </linearGradient>
+    <linearGradient id="logo-gradient-2" gradientUnits="userSpaceOnUse" x1="-8.0391" y1="17.2148" x2="45.724" y2="70.978">
+      <stop offset="0" stop-color="#F9A03C"></stop>
+      <stop offset="1" stop-color="#F7974E"></stop>
+    </linearGradient>
+    <linearGradient id="logo-gradient-3" gradientUnits="userSpaceOnUse" x1="11.9321" y1="36.5513" x2="66.3901" y2="91.0092">
+      <stop offset="0" stop-color="#F9A03C"></stop>
+      <stop offset="1" stop-color="#F7974E"></stop>
+    </linearGradient>
+    <linearGradient id="logo-gradient-4" gradientUnits="userSpaceOnUse" x1="1.6533" y1="-1.6533" x2="86.899" y2="83.5924">
+      <stop offset="0" stop-color="#F26D58"></stop>
+      <stop offset="1" stop-color="#F9A03C"></stop>
+    </linearGradient>
+    <linearGradient id="logo-gradient-5" gradientUnits="userSpaceOnUse" x1="45.2446" y1="-9.5483" x2="108.0998" y2="53.3068">
+      <stop offset="0" stop-color="#B84E51"></stop>
+      <stop offset="1" stop-color="#F68E48"></stop>
+    </linearGradient>
+    <linearGradient id="logo-gradient-6" gradientUnits="userSpaceOnUse" x1="6.6323" y1="64.3193" x2="49.6788" y2="107.3658">
+      <stop offset="0" stop-color="#F9A03C"></stop>
+      <stop offset="1" stop-color="#F7974E"></stop>
+    </linearGradient>
+    <path fill="url(#logo-gradient-1)" d="M95.82,65.857c0.043-0.418,0.074-0.84,0.098-1.264c0.029-0.502-30.211-29.194-30.211-29.194h-0.723C64.984,35.399,95.635,67.73,95.82,65.857z"></path>
+    <path fill="url(#logo-gradient-2)" d="M31.302,55.904c-0.04,0.088-0.08,0.176-0.121,0.264c-0.043,0.092-0.087,0.184-0.131,0.275c-0.964,2.01,13.495,16.145,14.658,14.428c0.053-0.076,0.106-0.156,0.159-0.232c0.059-0.09,0.117-0.176,0.175-0.266C46.972,68.961,31.715,54.986,31.302,55.904z"></path>
+    <path fill="url(#logo-gradient-3)" d="M51.734,75.781c-0.041,0.09-0.332,0.582-0.598,0.842c-0.045,0.09,14.115,14.133,14.115,14.133h1.275C66.527,90.756,53.234,76.375,51.734,75.781z"></path>
+    <path fill="url(#logo-gradient-4)" d="M95.938,64.338c-0.662,14.68-12.807,26.418-27.645,26.418h-2.006L51.469,76.158c1.219-1.719,2.352-3.5,3.361-5.357h13.463c4.258,0,7.723-3.463,7.723-7.723c0-4.258-3.465-7.723-7.723-7.723h-7.967c0.607-3.209,0.939-6.518,0.939-9.903c0-3.437-0.338-6.793-0.967-10.053h4.949l30.604,30.155C95.887,65.15,95.916,64.746,95.938,64.338z M8.05,0H0v19.955h8.05c14.06,0,25.5,11.437,25.5,25.497c0,3.825-0.853,7.456-2.369,10.716l14.686,14.471c4.822-7.215,7.641-15.877,7.641-25.187C53.508,20.39,33.115,0,8.05,0z"></path>
+    <path fill="url(#logo-gradient-5)" d="M68.293,0H35.695c7.962,4.861,14.555,11.754,19.047,19.955h13.551c4.258,0,7.723,3.463,7.723,7.723c0,4.259-3.465,7.722-7.723,7.722h-3.045l30.604,30.155c0.072-0.818,0.117-1.641,0.117-2.477c0-6.727-2.414-12.898-6.422-17.701c4.008-4.801,6.422-10.973,6.422-17.699C95.969,12.417,83.555,0,68.293,0z"></path>
+    <path fill="url(#logo-gradient-6)" d="M66.287,90.756H35.928C42.039,86.982,47.322,82,51.469,76.158L66.287,90.756z M45.867,70.639L31.182,56.168C27.125,64.887,18.284,70.951,8.05,70.951H0v19.953h8.05C23.804,90.904,37.709,82.846,45.867,70.639z"></path>
+  </svg>
+  #Data-Driven Documents
 
-D3’s emphasis on web standards gives you the full capabilities of modern browsers without tying yourself to a proprietary framework, combining powerful visualization components and a data-driven approach to DOM manipulation.
+
+---
+
+
+# Introduction
+
+D3 allows you to bind arbitrary data to a Document Object Model (DOM), and then apply data-driven transformations to the document.    
+For example, you can use D3 to generate an HTML table from an array of numbers. Or, use the same data to create an interactive SVG bar chart with smooth transitions and interaction.
+
+D3 is not a monolithic framework that seeks to provide every conceivable feature. Instead, D3 solves the crux of the problem: efficient manipulation of documents based on data.  
+This avoids proprietary representation and affords extraordinary flexibility, exposing the full capabilities of web standards such as CSS3, HTML5 and SVG.  
+
+With minimal overhead, D3 is extremely fast, supporting large datasets and dynamic behaviors for interaction and animation. D3’s functional style allows code reuse through a diverse collection of components and plugins.
 
 
 ---
@@ -80,31 +124,18 @@ In example:
 ---
 
 
-# Introduction
-
-D3 allows you to bind arbitrary data to a Document Object Model (DOM), and then apply data-driven transformations to the document.  
-For example, you can use D3 to generate an HTML table from an array of numbers. Or, use the same data to create an interactive SVG bar chart with smooth transitions and interaction.
-
-D3 is not a monolithic framework that seeks to provide every conceivable feature. Instead, D3 solves the crux of the problem: efficient manipulation of documents based on data.  
-This avoids proprietary representation and affords extraordinary flexibility, exposing the full capabilities of web standards such as CSS3, HTML5 and SVG.  
-With minimal overhead, D3 is extremely fast, supporting large datasets and dynamic behaviors for interaction and animation. D3’s functional style allows code reuse through a diverse collection of components and plugins.
-
-
----
-
-
 # D3 components
 
 Everything in D3 is scoped under the d3 namespace.
 
-  - Core - selections, transitions, data, localization, colors, etc.
-  - Scales - convert between data and visual encodings
-  - SVG - utilities for creating Scalable Vector Graphics
-  - Time - parse or format times, compute calendar intervals, etc.
-  - Layouts - derive secondary data for positioning elements
-  - Geography - project spherical coordinates, latitude & longitude math
-  - Geometry - utilities for 2D geometry, such as Voronoi diagrams and quadtrees
-  - Behaviors - reusable interaction behaviors
+  - [Core](https://github.com/mbostock/d3/wiki/API-Reference#d3-core) - selections, transitions, data, localization, colors, etc.
+  - [Scales](https://github.com/mbostock/d3/wiki/API-Reference#d3scale-scales) - convert between data and visual encodings
+  - [SVG](https://github.com/mbostock/d3/wiki/API-Reference#d3svg-svg) - utilities for creating Scalable Vector Graphics
+  - [Time](https://github.com/mbostock/d3/wiki/API-Reference#d3time-time) - parse or format times, compute calendar intervals, etc.
+  - [Layouts](https://github.com/mbostock/d3/wiki/API-Reference#d3layout-layouts) - derive secondary data for positioning elements
+  - [Geography](https://github.com/mbostock/d3/wiki/API-Reference#d3geo-geography) - project spherical coordinates, latitude & longitude math
+  - [Geometry](https://github.com/mbostock/d3/wiki/API-Reference#d3geom-geometry) - utilities for 2D geometry, such as Voronoi diagrams and quadtrees
+  - [Behaviors](https://github.com/mbostock/d3/wiki/API-Reference#d3behavior-behaviors) - reusable interaction behaviors
 
 
 ---
@@ -113,8 +144,7 @@ Everything in D3 is scoped under the d3 namespace.
 # D3 / Core / Selections
 
 A selection is an array of elements pulled from the current document.  
-D3 uses CSS3 to select elements. For example, you can select by tag ("div"), class (".awesome"), unique identifier ("#foo"), attribute ("[color=red]"), or containment ("parent child"). 
-Selectors can also be intersected (".this.that" for logical AND) or unioned (".this, .that" for logical OR). 
+D3 uses CSS3 to select elements.  
 If your browser doesn't support selectors natively, you can include Sizzle before D3 for backwards-compatibility.
 
 ## Basic methods:
@@ -130,11 +160,40 @@ If your browser doesn't support selectors natively, you can include Sizzle befor
 ---
 
 
+# Selections (Examples)
+
+For example, you can select by tag ("div"), class (".awesome"), unique identifier ("#foo"), attribute ("[color=red]"), or containment ("parent child"). 
+Selectors can also be intersected (".this.that" for logical AND) or unioned (".this, .that" for logical OR). 
+
+``` js
+var paragraphs = document.getElementsByTagName("p");
+for (var i = 0; i < paragraphs.length; i++) {
+  var paragraph = paragraphs.item(i);
+  paragraph.style.setProperty("color", "white", null);
+}
+```
+``` js
+d3.selectAll("p").style("color", "white");
+
+d3.select("body").style("background-color", "black");
+```
+``` js
+var td = d3.selectAll("tbody tr").selectAll("td");
+td.style("color", function(d, i) { return i ? null : "red"; });
+
+var td = d3.selectAll("tbody tr")
+    .data(matrix)
+  .selectAll("td")
+    .data(function(d, i) { return d; }); // d is matrix[i];
+```
+
+
+---
+
+
 # D3 / Core / Transitions
 
-A transition is a special type of selection where the operators apply smoothly over time rather than instantaneously. You derive a transition from a selection using the transition operator. 
-While transitions generally support the same operators as selections (such as attr and style), not all operators are supported; for example, you must append elements before a transition starts. 
-A remove operator is provided for convenient removal of elements when the transition ends.
+A transition is a special type of selection where the operators apply smoothly over time rather than instantaneously. 
 
 ## Basic methods:
   - Starting Transitions (d3.transition(), transition.delay(), transition.duration(), transition.ease())
@@ -144,8 +203,40 @@ A remove operator is provided for convenient removal of elements when the transi
     - Control
     - Easing (d3.ease()(linear, poly(k), quad, cubic... bounce), ease(t))
     - Timers (d3.timer(), d3.timer.flush())
-    - Interpolation (d3.interpolate(a, b), interpolate(t), d3.interpolateNumber(a, b), d3.interpolateString(a, b), d3.interpolateRgb(a, b), d3.interpolateArray(a, b), d3.interpolateTransform(a, b), d3.interpolateZoom(a, b), d3.geo.interpolate(a, b), d3.interpolators)
+    - Interpolation (interpolate, interpolateNumber, interpolateString, interpolateRgb, interpolateArray, interpolateTransform, interpolateZoom, geo.interpolate, interpolators)
 
+
+---
+
+
+# Transitions (Examples)
+
+``` js
+d3.selectAll("circle").transition()
+    .duration(750)
+    .delay(function(d, i) { return i * 10; })
+    .attr("r", function(d) { return Math.sqrt(d * scale); });
+```
+``` js    
+selection.transition().tween("text", function() {
+  var i = d3.interpolateRound(0, 100);
+  return function(t) {
+    this.textContent = i(t);
+  };
+});
+```
+``` js 
+d3.transition()
+    .duration(750)
+    .ease("linear")
+    .each(function() {
+      d3.selectAll(".foo").transition().style("opacity", 0).remove();
+    })
+  .transition()
+    .each(function() {
+      d3.selectAll(".bar").transition().style("opacity", 0).remove();
+    });
+```
 
 ---
 
@@ -166,7 +257,33 @@ When using D3—and doing data visualization in general—you tend to do a lot o
 ---
 
 
-# D3 / Core / Others
+# Arrays (Examples)
+
+``` js
+function descending(a, b) {
+  return b < a ? -1 : b > a ? 1 : b >= a ? 0 : NaN;
+}
+```
+``` js
+var m = d3.map([{name: "foo"}, {name: "bar"}], function(d) { return d.name; });
+m.get("foo"); // {"name": "foo"}
+m.get("bar"); // {"name": "bar"}
+m.get("baz"); // undefined
+```
+
+``` js
+d3.merge([ [1], [2, 3] ]); // returns [1, 2, 3];
+
+d3.zip([1, 2], [3, 4]); // returns [[1, 3], [2, 4]];
+
+d3.pairs([1, 2, 3, 4]); // returns [[1, 2], [2, 3], [3, 4]];
+
+```
+
+---
+
+
+# D3 / Core / Others parts
 
 ## Basic methods:
   - Math (d3.random.normal(), d3.random.irwinHall(), transform.rotate, transform.skew, transform.scale ...)
@@ -181,6 +298,35 @@ When using D3—and doing data visualization in general—you tend to do a lot o
 ---
 
 
+# Examples
+
+``` js
+d3.csv("path/to/file.csv")
+  .row(function(d) { return {key: d.key, value: +d.value}; })
+  .get(function(error, rows) { console.log(rows); });
+
+d3.csv("/path/to/file.csv")
+  .header("Content-Type", "application/json")
+  .post(JSON.stringify({a: 2, b: 3}), function(error, data) {
+    // callback
+  });
+```
+``` js
+var zero = d3.format("04d");
+zero(2); // "0002"
+zero(123); // "0123"
+
+var prefix = d3.formatPrefix(1.21e9);
+console.log(prefix.symbol); // "G"
+console.log(prefix.scale(1.21e9)); // 1.21
+
+d3.requote("[]"); // "\[\]"
+```
+
+
+---
+
+
 # D3 Features
 
 ## Scales
@@ -188,12 +334,21 @@ When using D3—and doing data visualization in general—you tend to do a lot o
   - [Ordinal Scales](https://github.com/mbostock/d3/wiki/Ordinal-Scales) - for discrete input domains, such as names or categories.
   - [Time Scales](https://github.com/mbostock/d3/wiki/Time-Scales) - for time domains.
 
-**Examples**
+##Examples
 
 ``` js
-/////////////////////////////////
+var color = d3.scale.linear()
+    .domain([-1, 0, 1])
+    .range(["red", "white", "green"]);
 ```
-
+``` js
+var o = d3.scale.ordinal()
+    .domain(d3.range(50))
+    .rangeRoundPoints([0, 95]);
+o.range(); // [23, 24, 25, …, 70, 71, 72]
+o.rangeRoundPoints([0, 100]);
+o.range(); // [1, 3, 5, …, 95, 97, 98]
+```
 
 ---
 
@@ -205,10 +360,20 @@ When using D3—and doing data visualization in general—you tend to do a lot o
   - [Axes](https://github.com/mbostock/d3/wiki/SVG-Axes) - generate standard axes for visualizations in SVG.
   - [Controls](https://github.com/mbostock/d3/wiki/SVG-Controls) - generate standard interactive visualization controls in SVG.
 
-**Examples**
+##Examples
 
 ``` js
-/////////////////////////////////
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .tickValues([1, 2, 3, 5, 8, 13, 21]);
+
+d3.select("body").append("svg")
+    .attr("class", "axis")
+    .attr("width", 1440)
+    .attr("height", 30)
+  .append("g")
+    .attr("transform", "translate(0,30)")
+    .call(axis);    
 ```
 
 
@@ -222,10 +387,16 @@ When using D3—and doing data visualization in general—you tend to do a lot o
   - [Time Scales](https://github.com/mbostock/d3/wiki/Time-Scales) - compute visual encodings of times.
   - [Time Intervals](https://github.com/mbostock/d3/wiki/Time-Intervals) - perform simple time arithmetic.
 
-**Examples**
+##Examples
 
 ``` js
-/////////////////////////////////
+var format = d3.time.format("%Y-%m-%d");
+format.parse("2011-01-01"); // returns a Date
+format(new Date(2011, 0, 1)); // returns a string
+
+var iso = d3.time.format.utc("%Y-%m-%dT%H:%M:%S.%LZ");
+
+d3.time.day.ceil(new Date()) // midnight (12:00 AM)
 ```
 
 
@@ -259,10 +430,22 @@ When using D3—and doing data visualization in general—you tend to do a lot o
   - [Projections](https://github.com/mbostock/d3/wiki/Geo-Projections) - convert locations (latitude and longitude) to pixel coordinates.
   - [Streams](https://github.com/mbostock/d3/wiki/Geo-Streams) - streaming geometry transformations.
 
-**Examples**
+##Examples
 
 ``` js
-/////////////////////////////////
+svg.selectAll("path")
+    .data(features)
+  .enter().append("path")
+    .attr("d", d3.geo.path());
+```
+``` js
+function matrix(a, b, c, d, tx, ty) {
+  return d3.geo.transform({
+    point: function(x, y) { this.stream.point(a * x + b * y + tx, c * x + d * y + ty); },
+  });
+}
+var path = d3.geo.path()
+    .projection(matrix(1, 0, 0, -1, 0, height));
 ```
 
 
@@ -277,10 +460,15 @@ When using D3—and doing data visualization in general—you tend to do a lot o
   - [Hull](https://github.com/mbostock/d3/wiki/Hull-Geom) - compute the convex hull of a set of points.
   - [Polygon](https://github.com/mbostock/d3/wiki/Polygon-Geom) - perform polygon operations, such as computing area and clipping.
 
-**Examples**
+##Examples
 
 ``` js
-/////////////////////////////////
+var hull = svg.append("path")
+    .attr("class", "hull");
+
+hull.datum(d3.geom.hull(vertices)).attr("d", function(d) { 
+  return "M" + d.join("L") + "Z"; 
+});
 ```
 
 
@@ -293,101 +481,34 @@ When using D3—and doing data visualization in general—you tend to do a lot o
   - [Drag](https://github.com/mbostock/d3/wiki/Drag-Behavior) -  automatically creates event listeners to handle drag gestures on an element. Both mouse events and touch events are supported.
   - [Zoom](https://github.com/mbostock/d3/wiki/Zoom-Behavior) - automatically creates event listeners to handle zooming and panning gestures on a container element. Both mouse and touch events are supported.
 
-**Examples**
-
+##Examples
 ``` js
-/////////////////////////////////
+selection.on("click", function() { // click suppressed;
+  if (d3.event.defaultPrevented) return; // may console.log("clicked!");
+});
+drag.on("dragstart", function() {
+  d3.event.sourceEvent.stopPropagation(); // silence other listeners });
+```
+``` js
+var zoom = d3.behavior.zoom().scale(projection.scale() * 2 * Math.PI)
+    .scaleExtent([1 << 11, 1 << 14])
+    .translate([width - center[0], height - center[1]])
+    .on("zoom", zoomed);
+function zoomed() { // function body =) }
 ```
 
 
 ---
 
 
-#Enter and Exit
+# Useful links
 
-Read more about data joins.
-Using D3’s enter and exit selections, you can create new nodes for incoming data and remove outgoing nodes that are no longer needed.
-
-When data is bound to a selection, each element in the data array is paired with the corresponding node in the selection. If there are fewer nodes than data, the extra data elements form the enter selection, which you can instantiate by appending to the enter selection. For example:
-``` js
-d3.select("body").selectAll("p")
-    .data([4, 8, 15, 16, 23, 42])
-  .enter().append("p")
-    .text(function(d) { return "I’m number " + d + "!"; });
-```
-Updating nodes are the default selection—the result of the data operator. Thus, if you forget about the enter and exit selections, you will automatically select only the elements for which there exists corresponding data. A common pattern is to break the initial selection into three parts: the updating nodes to modify, the entering nodes to add, and the exiting nodes to remove.
-``` js
-// Update…
-var p = d3.select("body").selectAll("p")
-    .data([4, 8, 15, 16, 23, 42])
-    .text(String);
-
-// Enter…
-p.enter().append("p")
-    .text(String);
-
-// Exit…
-p.exit().remove();
-```
-By handling these three cases separately, you specify precisely which operations run on which nodes. This improves performance and offers greater control over transitions. For example, with a bar chart you might initialize entering bars using the old scale, and then transition entering bars to the new scale along with the updating and exiting bars.
-
-D3 lets you transform documents based on data; this includes both creating and destroying elements. D3 allows you to change an existing document in response to user interaction, animation over time, or even asynchronous notification from a third-party. A hybrid approach is even possible, where the document is initially rendered on the server, and updated on the client via D3.
-
+- [API](https://github.com/mbostock/d3/wiki/API-Reference)
+- [D3-Tips-and-Tricks](https://leanpub.com/D3-Tips-and-Tricks/read)
+- [Gallery](https://github.com/mbostock/d3/wiki/Gallery)
 
 ---
 
-
-#Transitions
-
-D3’s focus on transformation extends naturally to animated transitions. Transitions gradually interpolate styles and attributes over time. Tweening can be controlled via easing functions such as “elastic”, “cubic-in-out” and “linear”. D3’s interpolators support both primitives, such as numbers and numbers embedded within strings (font sizes, path data, etc.), and compound values. You can even extend D3’s interpolator registry to support complex properties and data structures.
-
-For example, to fade the background of the page to black:
-``` js
-d3.select("body").transition()
-    .style("background-color", "black");
-```
-Or, to resize circles in a symbol map with a staggered delay:
-``` js
-d3.selectAll("circle").transition()
-    .duration(750)
-    .delay(function(d, i) { return i * 10; })
-    .attr("r", function(d) { return Math.sqrt(d * scale); });
-```
-By modifying only the attributes that actually change, D3 reduces overhead and allows greater graphical complexity at high frame rates. D3 also allows sequencing of complex transitions via events. And, you can still use CSS3 transitions; D3 does not replace the browser’s toolbox, but exposes it in a way that is easier to use.
-
-
----
-
-
-# D3 is a library
- - method chaining
- - style guige |
- - purpose of using, goals
- - sources & documentations
-
-## Features
-- axis
-- svg vs canvas
-
-## components
-- path
-- shapes
-- styling svg 
-- children based object for working with arrays and methods for converting for such structure
-
-
----
-
-
-## working with data
-- arrays, objects
-- json
-- csv, tsv
-
-## Examples of using
-
-
----
 
 class: center, middle 
 
