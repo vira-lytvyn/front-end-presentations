@@ -29,30 +29,45 @@ D3’s emphasis on web standards gives you the full capabilities of modern brows
 ---
 
 
-# Ways to install
+# Browser support
 
-1.  Download the latest version from official [website](http://d3js.org/) in *.zip format of from GitHub 
+D3 supports so-called “modern” browsers, which generally means everything except IE8 and below. D3 is tested against Firefox, Chrome, Safari, Opera, IE9+, Android and iOS. Parts of D3 may work in older browsers, as the core D3 library has minimal requirements: JavaScript and the W3C DOM API. D3 uses the Selectors API Level 1, but you can preload Sizzle for compatibility. You'll need a modern browser to use SVG and CSS3 Transitions.
+
+
+---
+
+
+# Installing
+
+1.  Download the latest version from official [website](http://d3js.org/) in *.zip format of from GitHub
+
 2.  Use direct link or CDN
 
 ``` html
-
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-
 <!-- or -->
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.2/d3.min.js"></script>
-
 ```
+**Note**: the non-minified source code contains non-ASCII characters and must be served with UTF-8 encoding, either via the charset="utf-8" attribute on the script tag or by adding 
+``` html 
+<meta charset="utf-8"> 
+```
+to the top of the page. If you see a SyntaxError: Unexpected token ILLEGAL at var Ï€ = Math.PI, it is because you are serving the non-minified source with the incorrect ISO-8859-1 encoding. See this StackOverflow answer for more information.
 
-3.  Install D3.js from shell via Bower.js or Node package manager
-
+3.  D3 is also available via numerous package managers, including: NPM (Node.js), Bower, Browserify, Component, Jam, Composer / Packagist (PHP), SPM, JSPM, NuGet (.Net), and AMD (e.g., RequireJS). The official releases of D3 are on NPM and GitHub only; support for other package managers is unofficial and maintained by contributors. 
+In example:
 ``` shell
 bower install d3
 ```
 or 
-``` shell
-npm install d3
+``` js
+require.config({paths: {d3: "http://d3js.org/d3.v3.min"}});
+
+require(["d3"], function(d3) {
+  console.log(d3.version);
+});
 ```
+
 
 ---
 
@@ -70,56 +85,211 @@ With minimal overhead, D3 is extremely fast, supporting large datasets and dynam
 ---
 
 
-#Selections
+# D3 components
 
-Modifying documents using the W3C DOM API is tedious: the method names are verbose, and the imperative approach requires manual iteration and bookkeeping of temporary state. For example, to change the text color of paragraph elements:
+Everything in D3 is scoped under the d3 namespace.
 
-```js
-var paragraphs = document.getElementsByTagName("p");
-for (var i = 0; i < paragraphs.length; i++) {
-  var paragraph = paragraphs.item(i);
-  paragraph.style.setProperty("color", "white", null);
-}
-```
-D3 employs a declarative approach, operating on arbitrary sets of nodes called selections. For example, you can rewrite the above loop as:
-``` js
-d3.selectAll("p").style("color", "white");
-```
-Yet, you can still manipulate individual nodes as needed:
-``` js
-d3.select("body").style("background-color", "black");
-```
-Selectors are defined by the W3C Selectors API and supported natively by modern browsers. Backwards-compatibility for older browsers can be provided by Sizzle. The above examples select nodes by tag name ("p" and "body", respectively). Elements may be selected using a variety of predicates, including containment, attribute values, class and ID.
-
-D3 provides numerous methods for mutating nodes: setting attributes or styles; registering event listeners; adding, removing or sorting nodes; and changing HTML or text content. These suffice for the vast majority of needs. Direct access to the underlying DOM is also possible, as each D3 selection is simply an array of nodes.
+  - Core - selections, transitions, data, localization, colors, etc.
+  - Scales - convert between data and visual encodings
+  - SVG - utilities for creating Scalable Vector Graphics
+  - Time - parse or format times, compute calendar intervals, etc.
+  - Layouts - derive secondary data for positioning elements
+  - Geography - project spherical coordinates, latitude & longitude math
+  - Geometry - utilities for 2D geometry, such as Voronoi diagrams and quadtrees
+  - Behaviors - reusable interaction behaviors
 
 
 ---
 
 
-#Dynamic Properties
+# D3 / Core / Selections
 
-Readers familiar with other DOM frameworks such as jQuery or Prototype should immediately recognize similarities with D3. Yet styles, attributes, and other properties can be specified as functions of data in D3, not just simple constants. Despite their apparent simplicity, these functions can be surprisingly powerful; the d3.geo.path function, for example, projects geographic coordinates into SVG path data. D3 provides many built-in reusable functions and function factories, such as graphical primitives for area, line and pie charts.
+A selection is an array of elements pulled from the current document.  
+D3 uses CSS3 to select elements. For example, you can select by tag ("div"), class (".awesome"), unique identifier ("#foo"), attribute ("[color=red]"), or containment ("parent child"). 
+Selectors can also be intersected (".this.that" for logical AND) or unioned (".this, .that" for logical OR). 
+If your browser doesn't support selectors natively, you can include Sizzle before D3 for backwards-compatibility.
 
-For example, to randomly color paragraphs:
+## Basic methods:
+  - Selecting Elements (d3.select(), d3.selectAll() with "selector" || "node" arguments)
+  - Operating on Selections
+    - Content (selection.attr(), selection.classed(), selection.style()... selection.remove())
+    - Data (selection.data(), selection.datum(), selection.filter(), selection.sort(), selection.order())
+    - Animation & Interaction (selection.on(), d3.event, d3.mouse(), d3.touch(), selection.transition())
+    - Subselections
+    - Control (selection.each(), selection.call(), selection.empty(), selection.node(), selection.size())
+
+
+---
+
+
+# D3 / Core / Transitions
+
+A transition is a special type of selection where the operators apply smoothly over time rather than instantaneously. You derive a transition from a selection using the transition operator. 
+While transitions generally support the same operators as selections (such as attr and style), not all operators are supported; for example, you must append elements before a transition starts. 
+A remove operator is provided for convenient removal of elements when the transition ends.
+
+## Basic methods:
+  - Starting Transitions (d3.transition(), transition.delay(), transition.duration(), transition.ease())
+  - Operating on Transitions
+    - Content (transition.attr(), transition.attrTween(), transition.tween(), transition.remove())
+    - Subtransitions
+    - Control
+    - Easing (d3.ease()(linear, poly(k), quad, cubic... bounce), ease(t))
+    - Timers (d3.timer(), d3.timer.flush())
+    - Interpolation (d3.interpolate(a, b), interpolate(t), d3.interpolateNumber(a, b), d3.interpolateString(a, b), d3.interpolateRgb(a, b), d3.interpolateArray(a, b), d3.interpolateTransform(a, b), d3.interpolateZoom(a, b), d3.geo.interpolate(a, b), d3.interpolators)
+
+
+---
+
+
+# D3 / Core / Arrays
+
+When using D3—and doing data visualization in general—you tend to do a lot of array manipulation. That's because D3's canonical representation of data is an array. Some common forms of array manipulation include taking a contiguous slice (subset) of an array, filtering an array using a predicate function, and mapping an array to a parallel set of values using a transform function.
+
+## Basic methods:
+  - Ordering (d3.ascending(a, b), d3.max(), d3.median(), d3.deviation(), d3.bisectRight(), d3.shuffle())
+  - Associative Arrays (d3.keys(), d3.values(), d3.entries())
+  - Maps (map.has(key), map.get(key), map.set(key, value), map.remove(key), map.forEach(), map.empty(), map.size())
+  - Sets
+  - Array Operators (d3.merge(), d3.range(), d3.permute(), d3.zip(), d3.transpose(), d3.pairs())
+  - Nest
+
+
+---
+
+
+# D3 / Core / Others
+
+## Basic methods:
+  - Math (d3.random.normal(), d3.random.irwinHall(), transform.rotate, transform.skew, transform.scale ...)
+  - Requests (d3.xhr(), d3.text(), d3.json(), d3.xml(), d3.html(), d3.csv(), d3.tsv())
+  - Formatting (d3.format(specifier), d3.formatPrefix(), d3.round(), d3.requote(),  d3.time.format()...)
+  - Localization (d3.locale(), locale.numberFormat(), locale.timeFormat(), locale.timeFormat.utc())
+  - Colors (RGB & HSL & HCL & L*a*b* - *.brighter(), *.darker(), *.*, *.toString()
+  - Namespaces (d3.ns.prefix, d3.ns.qualify())
+  - Internals (d3.functor(), d3.rebind(), d3.dispatch(), dispatch.on(), dispatch.type())
+
+
+---
+
+
+# D3 Features
+
+## Scales
+  - [Quantitative Scales](https://github.com/mbostock/d3/wiki/Quantitative-Scales) - for continuous input domains, such as numbers.
+  - [Ordinal Scales](https://github.com/mbostock/d3/wiki/Ordinal-Scales) - for discrete input domains, such as names or categories.
+  - [Time Scales](https://github.com/mbostock/d3/wiki/Time-Scales) - for time domains.
+
+**Examples**
+
 ``` js
-d3.selectAll("p").style("color", function() {
-  return "hsl(" + Math.random() * 360 + ",100%,50%)";
-});
+/////////////////////////////////
 ```
-To alternate shades of gray for even and odd nodes:
+
+
+---
+
+
+# D3 Features
+
+## SVG
+  - [Shapes](https://github.com/mbostock/d3/wiki/SVG-Shapes) - generate geometric shapes and primitives in SVG.
+  - [Axes](https://github.com/mbostock/d3/wiki/SVG-Axes) - generate standard axes for visualizations in SVG.
+  - [Controls](https://github.com/mbostock/d3/wiki/SVG-Controls) - generate standard interactive visualization controls in SVG.
+
+**Examples**
+
 ``` js
-d3.selectAll("p").style("color", function(d, i) {
-  return i % 2 ? "#fff" : "#eee";
-});
+/////////////////////////////////
 ```
-Computed properties often refer to bound data. Data is specified as an array of values, and each value is passed as the first argument (d) to selection functions. With the default join-by-index, the first element in the data array is passed to the first node in the selection, the second element to the second node, and so on. For example, if you bind an array of numbers to paragraph elements, you can use these numbers to compute dynamic font sizes:
+
+
+---
+
+
+# D3 Features
+
+## Time
+  - [Time Formatting](https://github.com/mbostock/d3/wiki/Time-Formatting) - convert between times and strings.
+  - [Time Scales](https://github.com/mbostock/d3/wiki/Time-Scales) - compute visual encodings of times.
+  - [Time Intervals](https://github.com/mbostock/d3/wiki/Time-Intervals) - perform simple time arithmetic.
+
+**Examples**
+
 ``` js
-d3.selectAll("p")
-    .data([4, 8, 15, 16, 23, 42])
-    .style("font-size", function(d) { return d + "px"; });
+/////////////////////////////////
 ```
-Once the data has been bound to the document, you can omit the data operator; D3 will retrieve the previously-bound data. This allows you to recompute properties without rebinding.
+
+
+---
+
+
+# D3 Features
+
+## Layouts
+  - [Bundle](https://github.com/mbostock/d3/wiki/Bundle-Layout) - apply Holten's hierarchical bundling algorithm to edges.
+  - [Chord](https://github.com/mbostock/d3/wiki/Chord-Layout) - produce a chord diagram from a matrix of relationships.
+  - [Cluster](https://github.com/mbostock/d3/wiki/Cluster-Layout) - cluster entities into a dendrogram.
+  - [Force](https://github.com/mbostock/d3/wiki/Force-Layout) - position linked nodes using physical simulation.
+  - [Hierarchy](https://github.com/mbostock/d3/wiki/Hierarchy-Layout) - derive a **custom** hierarchical layout implementation.
+  - [Histogram](https://github.com/mbostock/d3/wiki/Histogram-Layout) - compute the distribution of data using quantized bins.
+  - [Pack](https://github.com/mbostock/d3/wiki/Pack-Layout) - produce a hierarchical layout using recursive circle-packing.
+  - [Partition](https://github.com/mbostock/d3/wiki/Partition-Layout) - recursively partition a node tree into a sunburst or icicle.
+  - [Pie](https://github.com/mbostock/d3/wiki/Pie-Layout) - compute the start and end angles for arcs in a pie or donut chart.
+  - [Stack](https://github.com/mbostock/d3/wiki/Stack-Layout) - compute the baseline for each series in a stacked bar or area chart.
+  - [Tree](https://github.com/mbostock/d3/wiki/Tree-Layout) - position a tree of nodes tidily.
+  - [Treemap](https://github.com/mbostock/d3/wiki/Treemap-Layout) - use recursive spatial subdivision to display a tree of nodes.
+
+
+---
+
+
+# D3 Features
+
+## Geo
+  - [Paths](https://github.com/mbostock/d3/wiki/Geo-Paths) - display geographic shapes.
+  - [Projections](https://github.com/mbostock/d3/wiki/Geo-Projections) - convert locations (latitude and longitude) to pixel coordinates.
+  - [Streams](https://github.com/mbostock/d3/wiki/Geo-Streams) - streaming geometry transformations.
+
+**Examples**
+
+``` js
+/////////////////////////////////
+```
+
+
+---
+
+
+# D3 Features
+
+## Geometry
+  - [Voronoi](https://github.com/mbostock/d3/wiki/Voronoi-Geom) - compute the Voronoi tesselation or Delaunay triangulation from a set of points.
+  - [Quadtree](https://github.com/mbostock/d3/wiki/Quadtree-Geom) - compute a quadtree from a set of points.
+  - [Hull](https://github.com/mbostock/d3/wiki/Hull-Geom) - compute the convex hull of a set of points.
+  - [Polygon](https://github.com/mbostock/d3/wiki/Polygon-Geom) - perform polygon operations, such as computing area and clipping.
+
+**Examples**
+
+``` js
+/////////////////////////////////
+```
+
+
+---
+
+
+# D3 Features
+
+## Behaviors
+  - [Drag](https://github.com/mbostock/d3/wiki/Drag-Behavior) -  automatically creates event listeners to handle drag gestures on an element. Both mouse events and touch events are supported.
+  - [Zoom](https://github.com/mbostock/d3/wiki/Zoom-Behavior) - automatically creates event listeners to handle zooming and panning gestures on a container element. Both mouse and touch events are supported.
+
+**Examples**
+
+``` js
+/////////////////////////////////
+```
 
 
 ---
@@ -159,17 +329,6 @@ D3 lets you transform documents based on data; this includes both creating and d
 ---
 
 
-#Transformation, not Representation
-
-D3 is not a new graphical representation. Unlike Processing, Raphaël, or Protovis, the vocabulary of marks comes directly from web standards: HTML, SVG and CSS. For example, you can create SVG elements using D3 and style them with external stylesheets. You can use composite filter effects, dashed strokes and clipping. If browser vendors introduce new features tomorrow, you’ll be able to use them immediately—no toolkit update required. And, if you decide in the future to use a toolkit other than D3, you can take your knowledge of standards with you!
-
-Best of all, D3 is easy to debug using the browser’s built-in element inspector: the nodes that you manipulate with D3 are exactly those that the browser understands natively.
-
-
-
----
-
-
 #Transitions
 
 D3’s focus on transformation extends naturally to animated transitions. Transitions gradually interpolate styles and attributes over time. Tweening can be controlled via easing functions such as “elastic”, “cubic-in-out” and “linear”. D3’s interpolators support both primitives, such as numbers and numbers embedded within strings (font sizes, path data, etc.), and compound values. You can even extend D3’s interpolator registry to support complex properties and data structures.
@@ -198,26 +357,9 @@ By modifying only the attributes that actually change, D3 reduces overhead and a
  - purpose of using, goals
  - sources & documentations
 
-
----
-
-
 ## Features
-- basic mehtods  
-- layouts
-  - pie chart
-  - force chart
-  - ...
-- behaviour
 - axis
-- working with arrays 
-- colors
-- animation
 - svg vs canvas
-
-
----
-
 
 ## components
 - path
@@ -234,10 +376,6 @@ By modifying only the attributes that actually change, D3 reduces overhead and a
 - json
 - csv, tsv
 
-
----
-
-
 ## Examples of using
 
 
@@ -248,6 +386,9 @@ class: center, middle
 .title[
 UXD training
 # Thank you for attention
+
+
+# Questions?)
 ]
 
 
