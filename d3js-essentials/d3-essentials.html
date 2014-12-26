@@ -148,8 +148,8 @@ D3 uses CSS3 to select elements.
 If your browser doesn't support selectors natively, you can include Sizzle before D3 for backwards-compatibility.
 
 ## Basic methods:
-  - Selecting Elements (d3.select(), d3.selectAll() with "selector" || "node" arguments)
-  - Operating on Selections
+  - [Selecting Elements]() (d3.select(), d3.selectAll() with "selector" || "node" arguments)
+  - [Operating on Selections]()
     - Content (selection.attr(), selection.classed(), selection.style()... selection.remove())
     - Data (selection.data(), selection.datum(), selection.filter(), selection.sort(), selection.order())
     - Animation & Interaction (selection.on(), d3.event, d3.mouse(), d3.touch(), selection.transition())
@@ -162,7 +162,7 @@ If your browser doesn't support selectors natively, you can include Sizzle befor
 
 # Selections (Examples)
 
-For example, you can select by tag ("div"), class (".awesome"), unique identifier ("#foo"), attribute ("[color=red]"), or containment ("parent child"). 
+For example, you can select by [tag]() ("div"), [class]() (".awesome"), [unique identifier]() ("#foo"), [attribute]() ("[color=red]"), or [containment]() ("parent child"). 
 Selectors can also be intersected (".this.that" for logical AND) or unioned (".this, .that" for logical OR). 
 
 ``` js
@@ -196,14 +196,14 @@ var td = d3.selectAll("tbody tr")
 A transition is a special type of selection where the operators apply smoothly over time rather than instantaneously. 
 
 ## Basic methods:
-  - Starting Transitions (d3.transition(), transition.delay(), transition.duration(), transition.ease())
-  - Operating on Transitions
-    - Content (transition.attr(), transition.attrTween(), transition.tween(), transition.remove())
-    - Subtransitions
-    - Control
-    - Easing (d3.ease()(linear, poly(k), quad, cubic... bounce), ease(t))
-    - Timers (d3.timer(), d3.timer.flush())
-    - Interpolation (interpolate, interpolateNumber, interpolateString, interpolateRgb, interpolateArray, interpolateTransform, interpolateZoom, geo.interpolate, interpolators)
+  - [Starting Transitions]() (d3.transition(), transition.delay(), transition.duration(), transition.ease())
+  - [Operating on Transitions]()
+    - [Content]() (transition.attr(), transition.attrTween(), transition.tween(), transition.remove())
+    - [Subtransitions]()
+    - [Control]()
+    - [Easing]() (d3.ease()(linear, poly(k), quad, cubic... bounce), ease(t))
+    - [Timers]() (d3.timer(), d3.timer.flush())
+    - [Interpolation]() (interpolate, interpolateNumber, interpolateString, interpolateRgb, interpolateArray, interpolateTransform, interpolateZoom, geo.interpolate, interpolators)
 
 
 ---
@@ -246,12 +246,12 @@ d3.transition()
 When using D3—and doing data visualization in general—you tend to do a lot of array manipulation. That's because D3's canonical representation of data is an array. Some common forms of array manipulation include taking a contiguous slice (subset) of an array, filtering an array using a predicate function, and mapping an array to a parallel set of values using a transform function.
 
 ## Basic methods:
-  - Ordering (d3.ascending(a, b), d3.max(), d3.median(), d3.deviation(), d3.bisectRight(), d3.shuffle())
-  - Associative Arrays (d3.keys(), d3.values(), d3.entries())
-  - Maps (map.has(key), map.get(key), map.set(key, value), map.remove(key), map.forEach(), map.empty(), map.size())
-  - Sets
-  - Array Operators (d3.merge(), d3.range(), d3.permute(), d3.zip(), d3.transpose(), d3.pairs())
-  - Nest
+  - [Ordering]() (d3.ascending(a, b), d3.max(), d3.median(), d3.deviation(), d3.bisectRight(), d3.shuffle())
+  - [Associative Arrays]() (d3.keys(), d3.values(), d3.entries())
+  - [Maps]() (map.has(key), map.get(key), map.set(key, value), map.remove(key), map.forEach(), map.empty(), map.size())
+  - [Sets]()
+  - [Array Operators]() (d3.merge(), d3.range(), d3.permute(), d3.zip(), d3.transpose(), d3.pairs())
+  - [Nest]()
 
 
 ---
@@ -286,13 +286,13 @@ d3.pairs([1, 2, 3, 4]); // returns [[1, 2], [2, 3], [3, 4]];
 # D3 / Core / Others parts
 
 ## Basic methods:
-  - Math (d3.random.normal(), d3.random.irwinHall(), transform.rotate, transform.skew, transform.scale ...)
-  - Requests (d3.xhr(), d3.text(), d3.json(), d3.xml(), d3.html(), d3.csv(), d3.tsv())
-  - Formatting (d3.format(specifier), d3.formatPrefix(), d3.round(), d3.requote(),  d3.time.format()...)
-  - Localization (d3.locale(), locale.numberFormat(), locale.timeFormat(), locale.timeFormat.utc())
-  - Colors (RGB & HSL & HCL & L*a*b* - *.brighter(), *.darker(), *.*, *.toString()
-  - Namespaces (d3.ns.prefix, d3.ns.qualify())
-  - Internals (d3.functor(), d3.rebind(), d3.dispatch(), dispatch.on(), dispatch.type())
+  - [Math]() (d3.random.normal(), d3.random.irwinHall(), transform.rotate, transform.skew, transform.scale ...)
+  - [Requests]() (d3.xhr(), d3.text(), d3.json(), d3.xml(), d3.html(), d3.csv(), d3.tsv())
+  - [Formatting]() (d3.format(specifier), d3.formatPrefix(), d3.round(), d3.requote(),  d3.time.format()...)
+  - [Localization]() (d3.locale(), locale.numberFormat(), locale.timeFormat(), locale.timeFormat.utc())
+  - [Colors]() (RGB & HSL & HCL & L*a*b* - *.brighter(), *.darker(), *.*, *.toString()
+  - [Namespaces]() (d3.ns.prefix, d3.ns.qualify())
+  - [Internals]() (d3.functor(), d3.rebind(), d3.dispatch(), dispatch.on(), dispatch.type())
 
 
 ---
@@ -506,6 +506,7 @@ function zoomed() { // function body =) }
 - [API](https://github.com/mbostock/d3/wiki/API-Reference)
 - [D3-Tips-and-Tricks](https://leanpub.com/D3-Tips-and-Tricks/read)
 - [Gallery](https://github.com/mbostock/d3/wiki/Gallery)
+- [d3-plugins](https://github.com/d3/d3-plugins)
 
 ---
 
